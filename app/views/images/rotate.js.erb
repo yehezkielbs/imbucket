@@ -1,0 +1,1 @@
+$("#image_link_<%= @image.id %>").replaceWith("<%= escape_javascript(render(:partial => 'image_link', :locals => {:image => @image})) %>");

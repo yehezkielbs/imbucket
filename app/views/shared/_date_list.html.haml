@@ -1,0 +1,8 @@
+#date_list
+  %ul
+    - @dates.each do |date|
+      %li
+        %a{:class => (@date && date == @date) ? 'selected' : '', :href => images_by_date_path(:date => date.strftime('%F'))}
+          = date.strftime('%a, %e %b %Y')
+          = @dates_with_recent_upload.include?(date) ? ' (new)' : ''
+  .clear

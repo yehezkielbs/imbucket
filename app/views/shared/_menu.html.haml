@@ -1,0 +1,5 @@
+#menu.bar
+  %a{:href => root_path} &lt; Index &gt;
+  %a{:href => new_image_path} &lt; Upload photo &gt;
+  - if user_signed_in?
+    %a{:href => destroy_user_session_path} &lt; Logout &gt;

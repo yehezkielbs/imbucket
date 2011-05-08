@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title Image Bucket
+    = stylesheet_link_tag(:all)
+    = csrf_meta_tag
+    = javascript_include_tag('jquery-1.5.min')
+    = javascript_include_tag('jquery.lightbox-0.5.min')
+    = javascript_include_tag('rails')
+    = javascript_include_tag('swfupload')
+    = javascript_include_tag('swfupload_handlers')
+    = javascript_include_tag('application')
+  %body
+    = render(:partial => 'shared/menu')
+    = yield

@@ -1,0 +1,7 @@
+#image_show
+  %a{:href => @image.authenticated_image_url(:original), :title => 'View the original'}= image_tag(@image.authenticated_image_url(:medium))
+.bar
+  .box
+    = link_to('Delete this image', image_path(@image), :confirm => "Are you sure?", :method => :delete)
+  .clear
+

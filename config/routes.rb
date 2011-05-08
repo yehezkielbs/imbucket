@@ -1,0 +1,71 @@
+Imbucket::Application.routes.draw do
+  devise_for :users
+
+  #resources :images
+  match 'images/new' => 'images#new', :via => :get, :as => 'new_image'
+  match 'images' => 'images#index', :via => :get, :as => 'images'
+  match 'images/:id' => 'images#show', :constraints => { :id => /\d+/ }, :via => :get, :as => 'image'
+  match 'images/:id' => 'images#destroy', :constraints => { :id => /\d+/ }, :via => :delete
+  match 'images/:date' => 'images#list_by_date', :constraints => { :date => /\d{4}-\d{2}-\d{2}/ }, :via => :get, :as => 'images_by_date'
+  match 'images' => 'images#create', :via => :post
+  match 'images/:id/rotate/:deg' => 'images#rotate', :constraints => { :id => /\d+/, :deg => /\d+/ }, :via => :post, :as => 'rotate_image'
+
+
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
+
+  # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
+
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
+
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
+
+  # Sample resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
+
+  # Sample resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
+  # Sample resource route with more complex sub-resources
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
+  #   end
+
+  # Sample resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => "welcome#index"
+  root :to => 'images#index'
+
+  # See how all your routes lay out with "rake routes"
+
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
+end

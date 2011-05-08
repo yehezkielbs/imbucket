@@ -1,0 +1,12 @@
+== Welcome
+
+It is an Image Gallery Rails app. Images are stored in Amazon's S3.
+It's a quick and dirty app, and currently doesn't have any tests.
+
+== Getting Started
+
+It's created using Ruby 1.9.2 & Rails 3
+
+After you check out, run bundle install to install the required gems.
+
+Then you need to update config/s3.yml and enter your Amazon's S3 credentials.

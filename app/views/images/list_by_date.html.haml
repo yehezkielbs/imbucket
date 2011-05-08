@@ -1,0 +1,12 @@
+= render(:partial => 'shared/date_list')
+#image_list
+  - @images.each do |image|
+    .image{:id => "image_container_#{image.id}"}
+      = render(:partial => 'image_link', :locals => {:image => image})
+      - if @show_buttons
+        = button_to('<-', rotate_image_path(:id => image.id, :deg => 270), :remote => true, :method => 'post', :disable_with => 'Processing...')
+        = button_to('->', rotate_image_path(:id => image.id, :deg => 90), :remote => true, :method => 'post', :disable_with => 'Processing...')
+        = button_to('^', rotate_image_path(:id => image.id, :deg => 0), :remote => true, :method => 'post', :disable_with => 'Processing...')
+        = button_to('v', rotate_image_path(:id => image.id, :deg => 180), :remote => true, :method => 'post', :disable_with => 'Processing...')
+        = button_to('X', image_path(image), :confirm => "Delete this image? Are you sure?", :remote => true, :method => :delete, :disable_with => 'Processing...')
+  .clear
